@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=./build.yml
+parameters:
+  env: ''
+
+jobs:
+  - job: 'build'
+    displayName: 'Build and Lint'
+    steps:
+      - task: AzureCLI@2
+        displayName: 'Install Bicep'
+        inputs:
+          azureSubscription: '${{ parameters.env }}'
+          scriptType: 'pscore'
+          scriptLocation: 'inlineScript'
+          inlineScript: 'az bicep install --version v0.9.1'
+      - task: AzureCLI@2
+        displayName: 'Build ARM template from Bicep' 
+        inputs: 
+          azureSubscription: '${{ parameters.env }}'
+          scriptType: 'pscore'
+          scriptLocation: 'inlineScript'
+          inlineScript: 'az bicep build --file main.bicep'
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Bicep-built ARM template'
+        inputs:
+          ArtifactName: 'ARMTemplate'
+          PathtoPublish: 'main.json'

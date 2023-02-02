@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=./tag.yml
+parameters:
+  env: ''
+
+jobs:
+  - job: 'tag'
+    displayName: 'Tag deployment'
+    variables:
+      git_tag: ${{ parameters.env }}_$(Build.BuildNumber)
+    steps:
+      - checkout: self
+        persistCredentials: true
+      - script: |
+          git config --global user.name "Azure Bicep"
+          git config --global user.email "bicep@azure.com"
+          git tag $(git_tag)
+          git push origin --tags
+        workingDirectory: $(Build.SourcesDirectory)

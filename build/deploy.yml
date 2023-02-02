@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=./deploy.yml
+parameters:
+  env: ''
+
+jobs:
+- deployment: 'deploy_${{ parameters.env }}'
+  displayName: 'Infrastructure'
+  environment: '${{ parameters.env }}'
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - download: none
+        - checkout: self
+        - task: AzureCLI@2
+          displayName: 'Confirm changes'
+          inputs:
+            azureSubscription: '${{ parameters.env }}'
+            scriptType: 'pscore'
+            scriptLocation: 'inlineScript'
+            inlineScript: 'az deployment group what-if --resource-group ${{ parameters.env }}-rg --template-file main.bicep --parameters @env/${{ parameters.env }}.parameters.json deployment_id=$(Build.BuildNumber)'
+        - task: AzureCLI@2
+          displayName: 'Run Deployment'
+          inputs:
+            azureSubscription: '${{ parameters.env }}'
+            scriptType: 'pscore'
+            scriptLocation: 'inlineScript'
+            inlineScript: 'az deployment group create --name ${{ parameters.env }}-$(Build.BuildNumber) --resource-group ${{ parameters.env }}-rg --template-file main.bicep --parameters @env/${{ parameters.env }}.parameters.json deployment_id=$(Build.BuildNumber)'

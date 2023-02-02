@@ -1,0 +1,46 @@
+{
+  "properties": {
+      "roleName": "AzureDevOps_Deployment",
+      "description": "Role for Azure DevOps to handle all deployment activities. Based on Contributor",
+      "assignableScopes": [
+          "/subscriptions/11111111-1111-1111-1111-111111111111"
+      ],
+      "permissions": [
+          {
+              "actions": [
+                  "*"
+              ],
+              "notActions": [
+                  "Microsoft.Authorization/classicAdministrators/write",
+                  "Microsoft.Authorization/classicAdministrators/delete",
+                  "Microsoft.Authorization/denyAssignments/write",
+                  "Microsoft.Authorization/denyAssignments/delete",
+                  "Microsoft.Authorization/diagnosticSettings/write",
+                  "Microsoft.Authorization/diagnosticSettings/delete",
+                  "Microsoft.Authorization/locks/delete",
+                  "Microsoft.Authorization/policyAssignments/write",
+                  "Microsoft.Authorization/policyAssignments/delete",
+                  "Microsoft.Authorization/policyAssignments/*/write",
+                  "Microsoft.Authorization/policyAssignments/*/delete",
+                  "Microsoft.Authorization/policyDefinitions/write",
+                  "Microsoft.Authorization/policyDefinitions/delete",
+                  "Microsoft.Authorization/policyExemptions/write",
+                  "Microsoft.Authorization/policyExemptions/delete",
+                  "Microsoft.Authorization/policySetDefinitions/write",
+                  "Microsoft.Authorization/policySetDefinitions/delete",
+                  "Microsoft.Authorization/roleAssignmentScheduleRequests/write",
+                  "Microsoft.Authorization/roleDefinitions/write",
+                  "Microsoft.Authorization/roleDefinitions/delete",
+                  "Microsoft.Authorization/roleEligibilityScheduleRequests/write",
+                  "Microsoft.Authorization/roleManagementPolicies/write",
+                  "Microsoft.Authorization/elevateAccess/action",
+                  "Microsoft.Blueprint/blueprintAssignments/write",
+                  "Microsoft.Blueprint/blueprintAssignments/delete",
+                  "Microsoft.Compute/galleries/share/action"
+              ],
+              "dataActions": [],
+              "notDataActions": []
+          }
+      ]
+  }
+}

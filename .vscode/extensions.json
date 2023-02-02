@@ -1,0 +1,3 @@
+{
+  "recommendations": ["msazurermtools.azurerm-vscode-tools", "ms-azuretools.vscode-bicep", "ms-azure-devops.azure-pipelines"]
+}

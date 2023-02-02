@@ -1,0 +1,32 @@
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-22.04'
+
+parameters:
+- name: environment
+  type: string
+  default:
+  values: [ dev, uat, preprod, prod ]
+
+stages:
+  - stage: 'build'
+    jobs:
+      - template: 'build/build.yml'
+        parameters:
+          env: ${{ parameters.environment }}
+
+  - stage: 'deploy'
+    displayName: 'Deploy to ${{ parameters.environment }}'
+    jobs:
+    - template: 'build/deploy.yml'
+      parameters:
+        env: ${{ parameters.environment }}
+
+  - stage: 'tag_deployment'
+    displayName: 'Tag successful deployment'
+    condition: and(succeeded(), notIn('${{ parameters.environment }}' , 'dev'))
+    jobs:
+      - template: 'build/tag.yml'
+        parameters:
+          env: ${{ parameters.environment }}

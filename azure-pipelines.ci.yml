@@ -1,0 +1,22 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-22.04'
+
+stages:
+  - stage: 'build'
+    jobs:
+      - template: 'build/build.yml'
+        parameters:
+          env: 'dev'
+
+  - stage: 'deploy_dev'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    displayName: 'Deploy to Dev'
+    jobs:
+    - template: 'build/deploy.yml'
+      parameters:
+        env: 'dev'

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environment": {
+      "value": "uat"
+    },
+    "network_settings": {
+      "value": {
+        "vnet_cidr": "10.30.0.0/16",
+        "subnet_cidr": "10.30.1.0/24"
+      }
+    }
+  }
+}
