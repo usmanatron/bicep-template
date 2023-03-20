@@ -38,6 +38,7 @@ The Azure DevOps YAML reference is [here](https://learn.microsoft.com/en-us/azur
 
 * [Using Azure Devops](./docs/azure-devops.md)
 * [Adding an environment](./docs/add-new-environment.md)
+* [Updating the Bicep Version](./docs/updating-bicep-version.md)
 
 ## Contributing
 
