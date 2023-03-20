@@ -14,7 +14,7 @@ Make sure you've got the following installed:
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * Bicep - install via the Azure CLI
-  * This repo is known to work with Bicep v0.9.1 and you can install this version by running `az bicep install --version v0.9.1`.  Later versions will probably work fine but, as things are changing rapidly in Bicep land, it's not guaranteed!
+  * This repo is known to work with Bicep v0.15.31 and you can install this version by running `az bicep install --version v0.15.31`.  Later versions will probably work fine but, as things are changing rapidly in Bicep land, it's not guaranteed!
 
 When you open the repo in VSCode, make sure you install all the recommended extensions!
 

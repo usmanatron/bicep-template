@@ -12,10 +12,11 @@ targetScope = 'resourceGroup'
 
 // Variables
 var shared_vars = {
+  location: 'uksouth'
   module_prefix: '${environment}-${deployment_id}'
+  // These two resource prefixes should be kept the same, just without hyphens
   resource_prefix: '${environment}-cust'
   resource_prefix_nohyphen: '${toLower(environment)}cust'
-  location: 'uksouth'
   lock_data_resources: bool(environment != 'dev')
   base_tags: {
     customer: 'cust'

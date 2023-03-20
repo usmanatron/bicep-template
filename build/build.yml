@@ -12,7 +12,7 @@ jobs:
           azureSubscription: '${{ parameters.env }}'
           scriptType: 'pscore'
           scriptLocation: 'inlineScript'
-          inlineScript: 'az bicep install --version v0.9.1'
+          inlineScript: 'az bicep install --version v0.15.31'
       - task: AzureCLI@2
         displayName: 'Build ARM template from Bicep' 
         inputs: 
